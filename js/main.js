@@ -553,13 +553,13 @@ const clickCookie = () => {
     Game.cookies += Game.cpc;
     updateData();
 
-    // let marginTop = Math.floor(Math.random() * 100)
-    // let marginLeft = Math.floor(Math.random() * 100)
-    // document.querySelector('#cookie-click-display').innerHTML += (
-    //     `
-    //     <span class="click-display" style="margin-left: ${marginLeft}%; margin-top: ${marginTop}%;">${Game.cpc}</span>
-    //     `
-    // )
+    let marginTop = Math.floor(Math.random() * 100)
+    let marginLeft = Math.floor(Math.random() * 100)
+    document.querySelector('#cookie-click-display').innerHTML += (
+        `
+        <span class="click-display" style="margin-left: ${marginLeft}%; margin-top: ${marginTop}%;">${Game.cpc}</span>
+        `
+    )
 }
 
 const updateData = () => {
