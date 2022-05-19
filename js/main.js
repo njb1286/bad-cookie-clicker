@@ -290,9 +290,9 @@ let Game = {
             name: "Double Finger",
             code_name: "double-finger",
             image: "./img/upgrades/fingers/blue.png",
-            price: 200,
+            price: 100,
             effects: [
-                "Game.cpc *= 2;"
+                "Game.cpc *= 2; Game.buildings[0].production *= 2;"
             ],
             description: "The more fingers, the more cookies",
             requirements: {
@@ -307,7 +307,7 @@ let Game = {
             image: "./img/upgrades/fingers/pink.png",
             price: 500,
             effects: [
-                "Game.cpc *= 2;"
+                "Game.cpc *= 2; Game.buildings[0].production *= 2;"
             ],
             description: "An index finger to help you with your journey!",
             requirements: {
@@ -320,7 +320,7 @@ let Game = {
             name: "Smoother Pins",
             code_name: "smoother-pins",
             image: "./img/upgrades/rolling_pins/blue.png",
-            price: 300,
+            price: 1000,
             effects: [
                 "Game.buildings[1].production *= 2;"
             ],
@@ -335,7 +335,7 @@ let Game = {
             name: "Lubricated Dentures",
             code_name: "lubricated-dentures",
             image: "./img/upgrades/rolling_pins/pink.png",
-            price: 300,
+            price: 5000,
             effects: [
                 "Game.buildings[1].production *= 2;"
             ],
@@ -350,7 +350,7 @@ let Game = {
             name: "Stronger Rakes",
             code_name: "stronger-rakes",
             image: "./img/upgrades/rakes/blue.png",
-            price: 800,
+            price: 1100,
             effects: [
                 "Game.buildings[2].production *= 2;"
             ],
@@ -365,7 +365,7 @@ let Game = {
             name: "GMOs",
             code_name: "gmos",
             image: "./img/upgrades/rakes/pink.png",
-            price: 1500,
+            price: 55000,
             effects: [
                 "Game.buildings[2].production *= 2;"
             ],
@@ -380,7 +380,7 @@ let Game = {
             name: "Deeper Mines",
             code_name: "deeper-mines",
             image: "./img/upgrades/pickaxes/blue.png",
-            price: 9000,
+            price: 120000,
             effects: [
                 "Game.buildings[3].production *= 2;"
             ],
@@ -395,7 +395,7 @@ let Game = {
             name: "Tungsten Plated Pickaxes",
             code_name: "tungsten-plated-pickaxes",
             image: "./img/upgrades/pickaxes/pink.png",
-            price: 14500,
+            price: 600000,
             effects: [
                 "Game.buildings[3].production *= 2;"
             ],
@@ -410,7 +410,7 @@ let Game = {
             name: "Child Labor",
             code_name: "child-labor",
             image: "./img/upgrades/gears/blue.png",
-            price: 95000,
+            price: 1300000,
             effects: [
                 "Game.buildings[4].production *= 2;"
             ],
@@ -425,7 +425,7 @@ let Game = {
             name: "Mechanical Engineers",
             code_name: "mech-engineers",
             image: "./img/upgrades/gears/pink.png",
-            price: 155000,
+            price: 6500000,
             effects: [
                 "Game.buildings[4].production *= 2;"
             ],

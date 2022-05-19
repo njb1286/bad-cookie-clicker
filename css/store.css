@@ -7,7 +7,7 @@
 .store-feature {
     display: grid;
     grid-template-columns: .5fr 1fr 1fr;
-    height: 113px;
+    height: 130px;
     align-items: center;
     grid-gap: 10px;
     cursor: pointer;
@@ -129,8 +129,8 @@
     background-color: #919191;
     border-right: 4px solid rgb(99, 99, 99);
     border-bottom: 4px solid rgb(99, 99, 99);
-    border-top: 4px solid rgb(38, 38, 38);
-    border-left: 4px solid rgb(38, 38, 38);
+    border-top: 4px solid rgb(99, 99, 99);
+    border-left: 4px solid rgb(99, 99, 99);
     margin-right: 0px;
     margin-left: 0px;
     margin-bottom: 0px;
