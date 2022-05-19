@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="./css/store.css">
     <link rel="stylesheet" href="./css/click-display.css">
 </head>
-<body onload="updateData(); setName(randomName(names.first, names.last)); buildingsRender(); refreshLoop(); gainLoop();">
+<body onload="updateData(); setName(randomName(names.first, names.last)); buildingsRender(); refreshLoop(); gainLoop(); upgradePopups();">
     <div class="container">
         <div class="cookie-container container-type">
             <div class="cookie-content">
@@ -43,7 +43,25 @@
         </div>
 
         <div class="items-container container-type" id="purchased-items">
+            <!-- <div class="purchased-items" id="purchased-${codeName(building.name)}">
+                <div class="item-info-wrapper">
+                    <div class="item-info">
+                        <h2>Cursor</h2>
+                        <p>Cost: <span id="cursor-cost-popup">15</span> cookies</p>
+                        <p>Production rate: <span id="cursor-prod-popup">0.1</span></p>
+                        <p>Count: <span id="cursor-count-popup">0</span></p>
+                        <p id="cursor-desc-popup" class="popup-description">Extra finger</p>
+                    </div>
+                </div>
+            </div> -->
 
+            <div class="upgrade-item-info-wrapper">
+                <div class="item-info">
+                    <h2>Upgrade</h2>
+                    <p>Cost: <span id="upgrade-cost-popup">15</span> cookies</p>
+                    <p id="upgrade-desc-popup" class="popup-description">More Finger</p>
+                </div>
+            </div>
         </div>
 
         <div class="store-container container-type">

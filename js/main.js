@@ -216,7 +216,7 @@ let Game = {
             name: "Cursor",
             count: 0,
             price: 15,
-            production: 0.2,
+            production: 0.1,
             description: "Extra finger"
         },
         
@@ -518,7 +518,7 @@ const buildingsRender = () => {
     for (building of Game.buildings) {
         destStore.innerHTML += (
             `
-            <div class="store-feature" id="store-feature-${codeName(building.name)}" onclick="getItem('${codeName(building.name)}'); updateData();">
+            <div class="store-feature" id="store-feature-${codeName(building.name)}" onclick="getItem('${codeName(building.name)}'); updateData();" onmouseover="document.querySelector('#${codeName(building.name)}-popup').style.display = 'flex'" onmouseout="document.querySelector('#${codeName(building.name)}-popup').style.display = 'none'">
                 <div class="feature-icon">
                     <img src="./img/icons/${codeName(building.name)}.png" alt="">
                 </div>
@@ -545,6 +545,20 @@ const buildingsRender = () => {
             </div>
             `
         );
+
+        document.querySelector(`#purchased-${codeName(building.name)}`).innerHTML += (
+            `
+            <div class="item-info-wrapper" id="${codeName(building.name)}-popup" style="display: none;">
+                <div class="item-info">
+                    <h2>${building.name}</h2>
+                    <p>Cost: <span id="${codeName(building.name)}-cost-popup">${building.price}</span> cookies</p>
+                    <p>Production rate: <span id="${codeName(building.name)}-prod-popup">${building.production}</span></p>
+                    <p>Count: <span id="${codeName(building.name)}-count-popup">${building.count}</span></p>
+                    <p id="${codeName(building.name)}-desc-popup" class="popup-description">${building.description}</p>
+                </div>
+            </div>
+            `
+        )
     }
 }
 
@@ -616,6 +630,11 @@ const updateData = () => {
                 document.querySelector(`#store-feature-${codeName(building.name)}`).classList.add('store-feature-disabled')
             }
 
+
+            // Update popups
+            document.querySelector(`#${codeName(building.name)}-cost-popup`).innerText = building.price;
+            document.querySelector(`#${codeName(building.name)}-prod-popup`).innerText = building.production;
+            document.querySelector(`#${codeName(building.name)}-count-popup`).innerText = building.count;
         }
     }
 
@@ -637,7 +656,7 @@ const updateData = () => {
                         upgrade.activated = true;
                         document.querySelector('#upgrades').innerHTML += (
                             `
-                            <div class="upgrade" id="upgrade-${upgrade.code_name}" onclick="if (Game.cookies >= ${upgrade.price}) {Game.upgrades[${upgradesCount}].used = true; document.querySelector('#upgrade-${upgrade.code_name}').remove(); ${effects}; Game.cookies -= ${upgrade.price}; updateData();}">
+                            <div class="upgrade" id="upgrade-${upgrade.code_name}" onmouseover="document.querySelector('#${codeName(upgrade.name)}-info-wrapper').style.display = 'flex'" onmouseout="document.querySelector('#${codeName(upgrade.name)}-info-wrapper').style.display = 'none'" onclick="if (Game.cookies >= ${upgrade.price}) {Game.upgrades[${upgradesCount}].used = true; document.querySelector('#upgrade-${upgrade.code_name}').remove(); ${effects}; Game.cookies -= ${upgrade.price}; document.querySelector('#${codeName(upgrade.name)}-info-wrapper').remove(); updateData();}">
                                 <img src="${upgrade.image}" alt="">
                             </div>
                             `
@@ -658,6 +677,22 @@ const updateData = () => {
                 document.querySelector(`#upgrade-${upgrade.code_name}`).classList.add('upgrade-disabled')
             }
         }
+    }
+}
+
+const upgradePopups = () => {
+    for (let upgrade of Game.upgrades) {
+        document.getElementsByClassName('purchased-items')[0].innerHTML += (
+            `
+            <div class="upgrade-item-info-wrapper" id="${codeName(upgrade.name)}-info-wrapper">
+                <div class="item-info">
+                    <h2>${upgrade.name}</h2>
+                    <p>Cost: <span id="${codeName(upgrade.name)}-cost-popup">${upgrade.price}</span> cookies</p>
+                    <p id="${codeName(upgrade.name)}-desc-popup" class="popup-description">${upgrade.description}</p>
+                </div>
+            </div>
+            `
+        )
     }
 }
 
