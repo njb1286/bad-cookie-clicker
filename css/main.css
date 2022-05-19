@@ -1,0 +1,20 @@
+body {
+    overflow: hidden;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: .8fr 1fr .5fr;
+}
+
+.container-type {
+    height: 99vh;
+    overflow-y: scroll;
+}
+
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}

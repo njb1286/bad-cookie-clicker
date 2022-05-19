@@ -1,0 +1,54 @@
+.cookie-container > .cookie-content {
+    text-align: center;
+    display: grid;
+    grid-template-rows: .1fr .1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    margin-top: 40px;
+}
+.cookie-content > .name-wrapper {
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0.307);
+    border-radius: 100px;
+}
+
+.cookies-info {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.307);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    height: 4em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#cookie-clickable {
+    margin-top: 50px;
+    width: 20em;
+    height: 20em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 100px;
+}
+
+#cookie-clickable img {
+    width: 100%;
+}
+
+#cookie-clickable:hover {
+    transition: 0.05s;
+    width: 400px;
+}
+
+#cookie-clickable:active {
+    width: 300px;
+    transition: 0.03s;
+}
+
+.cookies-count h2 {
+    margin: 0;
+}

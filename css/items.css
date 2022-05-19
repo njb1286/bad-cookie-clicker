@@ -1,0 +1,17 @@
+.items-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.purchased-items {
+    display: flex;
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: auto;
+    border-bottom: 5px solid lightgray;
+    height: 150px;
+}
+
+.pi-icon {
+    width: 150px;
+}

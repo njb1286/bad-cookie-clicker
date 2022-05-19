@@ -1,0 +1,12 @@
+#cookie-click-display {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+}
+
+.click-display {
+    position: absolute;
+}
