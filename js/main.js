@@ -250,6 +250,38 @@ let Game = {
             price: 130000,
             production: 260,
             description: "A huge factory to mass produce cookies for you"
+        },
+        
+        {
+            name: "Bank",
+            count: 0,
+            price: 1400000,
+            production: 1400,
+            description: "Creates cookies through interest"
+        },
+        
+        {
+            name: "Temple",
+            count: 0,
+            price: 20000000,
+            production: 7800,
+            description: "Start worshipping the chocolate Gods, and they may give you some of their goodies!"
+        },
+        
+        {
+            name: "Wizard Tower",
+            count: 0,
+            price: 330000000,
+            production: 44000,
+            description: "Uses magic to create cookies"
+        },
+        
+        {
+            name: "Shipment",
+            count: 0,
+            price: 5100000000,
+            production: 260000,
+            description: "Goes to the cookie planet, and imports the goods!"
         }
     ],
 
@@ -301,7 +333,7 @@ let Game = {
         },
         {
             name: "Lubricated Dentures",
-            code_name: "lubricated-tentures",
+            code_name: "lubricated-dentures",
             image: "./img/upgrades/rolling_pins/pink.png",
             price: 300,
             effects: [
@@ -409,6 +441,8 @@ let Game = {
 
 // Functions
 
+const codeName = (name) => name.toLowerCase().replace(' ', '_')
+
 const shortenNum = (num) => {
     output = '';
     if (num >= 1000000000000000000000000000000000000000 && output == '') {
@@ -484,21 +518,21 @@ const buildingsRender = () => {
     for (building of Game.buildings) {
         destStore.innerHTML += (
             `
-            <div class="store-feature" id="store-feature-${building.name.toLowerCase()}" onclick="getItem('${building.name.toLowerCase()}'); updateData();">
+            <div class="store-feature" id="store-feature-${codeName(building.name)}" onclick="getItem('${codeName(building.name)}'); updateData();">
                 <div class="feature-icon">
-                    <img src="./img/icons/${building.name.toLowerCase()}.png" alt="">
+                    <img src="./img/icons/${codeName(building.name)}.png" alt="">
                 </div>
 
                 <div class="name-price">
                     <h1>${building.name}</h1>
                     <div class="item-price">
                         <img src="./img/icons/cookie.png" alt="">
-                        <span id="building-price-${building.name.toLowerCase()}">${building.price}</span>
+                        <span id="building-price-${codeName(building.name)}">${building.price}</span>
                     </div>
                 </div>
 
                 <div class="item-count">
-                    <h2 id="building-count-${building.name.toLowerCase()}"></h2>
+                    <h2 id="building-count-${codeName(building.name)}"></h2>
                 </div>
             </div>
             `
@@ -506,7 +540,7 @@ const buildingsRender = () => {
 
         destPurch.innerHTML += (
             `
-            <div class="purchased-items" id="purchased-${building.name.toLowerCase()}">
+            <div class="purchased-items" id="purchased-${codeName(building.name)}">
 
             </div>
             `
@@ -526,14 +560,14 @@ const capitalize = (name) => {
 
 const getItem = (item) => {
     for (let building of Game.buildings) {
-        if (building.name == capitalize(item) && Game.cookies >= building.price) {
+        if (codeName(building.name) == codeName(item) && Game.cookies >= building.price) {
             building.count += 1;
 
             // Display item
-            document.querySelector(`#purchased-${building.name.toLowerCase()}`).innerHTML += (
+            document.querySelector(`#purchased-${codeName(building.name)}`).innerHTML += (
                 `
                 <div class="pi-icon">
-                    <img src="./img/icons/${building.name.toLowerCase()}.png" alt="">
+                    <img src="./img/icons/${codeName(building.name)}.png" alt="">
                 </div>
                 `
             );
@@ -568,18 +602,18 @@ const updateData = () => {
 
     Game.cps = 0
     for (let building of Game.buildings) {
-        if (document.querySelector(`#building-price-${building.name.toLowerCase()}`)) {
-            document.querySelector(`#building-price-${building.name.toLowerCase()}`).innerText = shortenNum(Math.round(building.price));
-            document.querySelector(`#building-count-${building.name.toLowerCase()}`).innerText = building.count;
+        if (document.querySelector(`#building-price-${codeName(building.name)}`)) {
+            document.querySelector(`#building-price-${codeName(building.name)}`).innerText = shortenNum(Math.round(building.price));
+            document.querySelector(`#building-count-${codeName(building.name)}`).innerText = building.count;
 
             // CPS
             Game.cps += building.production * building.count;
 
             // Light/Darken buildings
             if (Game.cookies >= building.price) {
-                document.querySelector(`#store-feature-${building.name.toLowerCase()}`).classList.remove('store-feature-disabled')
+                document.querySelector(`#store-feature-${codeName(building.name)}`).classList.remove('store-feature-disabled')
             } else {
-                document.querySelector(`#store-feature-${building.name.toLowerCase()}`).classList.add('store-feature-disabled')
+                document.querySelector(`#store-feature-${codeName(building.name)}`).classList.add('store-feature-disabled')
             }
 
         }
@@ -598,8 +632,8 @@ const updateData = () => {
         if (upgrade.activated !== true && upgrade.used !== true) {
             // Building count
             for (let building of Game.buildings) {
-                if (upgrade.requirements[`${building.name.toLowerCase()}`]) {
-                    if (building.count >= upgrade.requirements[`${building.name.toLowerCase()}`]) {
+                if (upgrade.requirements[`${codeName(building.name)}`]) {
+                    if (building.count >= upgrade.requirements[`${codeName(building.name)}`]) {
                         upgrade.activated = true;
                         document.querySelector('#upgrades').innerHTML += (
                             `
