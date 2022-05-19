@@ -553,13 +553,13 @@ const clickCookie = () => {
     Game.cookies += Game.cpc;
     updateData();
 
-    let marginTop = Math.floor(Math.random() * 100)
-    let marginLeft = Math.floor(Math.random() * 100)
-    document.querySelector('#cookie-click-display').innerHTML += (
-        `
-        <span class="click-display" style="margin-left: ${marginLeft}%; margin-top: ${marginTop}%;">${Game.cpc}</span>
-        `
-    )
+    // let marginTop = Math.floor(Math.random() * 100)
+    // let marginLeft = Math.floor(Math.random() * 100)
+    // document.querySelector('#cookie-click-display').innerHTML += (
+    //     `
+    //     <span class="click-display" style="margin-left: ${marginLeft}%; margin-top: ${marginTop}%; width: 100vw; height: 100vh position: absolute; display: flex; justify-content: left; opacity: 1;" onmouseover="var className = 'moved-up'; hasClass = (' ' + this.className + ' ').indexOf(' ' + className+ ' ') > -1; this.classList.add(className); if (!hasClass) {this.style.width = 'auto'; this.style.height = 'auto'; setTimeout(() => this.remove(), 3000); let marginLoop = 0; const marginInterval = setInterval(() => {marginLoop += 1; this.style.marginTop = \`\${parseInt(this.style.marginTop) - 1}px\`; if (marginLoop >= 300) {clearInterval(marginInterval)}}, 10); setTimeout(() => {let opacityCount = 0; const opacity = setInterval(() => {opacityCount += 1; this.style.opacity = \`\${parseFloat(this.style.opacity) - 0.1}\`; if (opacityCount >= 10) {clearInterval(opacity)}}, 100)}, 1500);}">${Game.cpc}</span>
+    //     `
+    // )
 }
 
 const updateData = () => {
