@@ -552,7 +552,7 @@ const buildingsRender = () => {
                 <div class="item-info">
                     <h2>${building.name}</h2>
                     <p>Cost: <span id="${codeName(building.name)}-cost-popup">${shortenNum(Math.round(building.price))}</span> cookies</p>
-                    <p>Production rate: <span id="${codeName(building.name)}-prod-popup">${shortenNum(Math.round(building.production))}</span></p>
+                    <p>Production rate: <span id="${codeName(building.name)}-prod-popup">${shortenNum(building.production.toFixed(3))}</span></p>
                     <p>Count: <span id="${codeName(building.name)}-count-popup">${shortenNum(Math.round(building.count))}</span></p>
                     <p id="${codeName(building.name)}-desc-popup" class="popup-description">${building.description}</p>
                 </div>
@@ -633,7 +633,7 @@ const updateData = () => {
 
             // Update popups
             document.querySelector(`#${codeName(building.name)}-cost-popup`).innerText = shortenNum(Math.round(building.price));
-            document.querySelector(`#${codeName(building.name)}-prod-popup`).innerText = shortenNum(Math.round(building.production));
+            document.querySelector(`#${codeName(building.name)}-prod-popup`).innerText = shortenNum(building.production.toFixed(3));
             document.querySelector(`#${codeName(building.name)}-count-popup`).innerText = shortenNum(Math.round(building.count));
         }
     }
