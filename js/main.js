@@ -446,7 +446,7 @@ const codeName = (name) => name.toLowerCase().replace(' ', '_')
 const shortenNum = (num) => {
     output = '';
     if (num >= 1000000000000000000000000000000000000000 && output == '') {
-        leMath.round(num/ 1000000000000000000000000000000000000000)
+        let divide = num / 1000000000000000000000000000000000000000
         output = `${divide.toFixed(3)} Duodecillion`
     }
 
@@ -551,14 +551,14 @@ const buildingsRender = () => {
             <div class="item-info-wrapper" id="${codeName(building.name)}-popup" style="display: none;">
                 <div class="item-info">
                     <h2>${building.name}</h2>
-                    <p>Cost: <span id="${codeName(building.name)}-cost-popup">${building.price}</span> cookies</p>
-                    <p>Production rate: <span id="${codeName(building.name)}-prod-popup">${building.production}</span></p>
-                    <p>Count: <span id="${codeName(building.name)}-count-popup">${building.count}</span></p>
+                    <p>Cost: <span id="${codeName(building.name)}-cost-popup">${shortenNum(Math.round(building.price))}</span> cookies</p>
+                    <p>Production rate: <span id="${codeName(building.name)}-prod-popup">${shortenNum(Math.round(building.production))}</span></p>
+                    <p>Count: <span id="${codeName(building.name)}-count-popup">${shortenNum(Math.round(building.count))}</span></p>
                     <p id="${codeName(building.name)}-desc-popup" class="popup-description">${building.description}</p>
                 </div>
             </div>
             `
-        )
+        );
     }
 }
 
@@ -632,9 +632,9 @@ const updateData = () => {
 
 
             // Update popups
-            document.querySelector(`#${codeName(building.name)}-cost-popup`).innerText = building.price;
-            document.querySelector(`#${codeName(building.name)}-prod-popup`).innerText = building.production;
-            document.querySelector(`#${codeName(building.name)}-count-popup`).innerText = building.count;
+            document.querySelector(`#${codeName(building.name)}-cost-popup`).innerText = shortenNum(Math.round(building.price));
+            document.querySelector(`#${codeName(building.name)}-prod-popup`).innerText = shortenNum(Math.round(building.production));
+            document.querySelector(`#${codeName(building.name)}-count-popup`).innerText = shortenNum(Math.round(building.count));
         }
     }
 
@@ -687,7 +687,7 @@ const upgradePopups = () => {
             <div class="upgrade-item-info-wrapper" id="${codeName(upgrade.name)}-info-wrapper">
                 <div class="item-info">
                     <h2>${upgrade.name}</h2>
-                    <p>Cost: <span id="${codeName(upgrade.name)}-cost-popup">${upgrade.price}</span> cookies</p>
+                    <p>Cost: <span id="${codeName(upgrade.name)}-cost-popup">${shortenNum(Math.round(upgrade.price))}</span> cookies</p>
                     <p id="${codeName(upgrade.name)}-desc-popup" class="popup-description">${upgrade.description}</p>
                 </div>
             </div>
